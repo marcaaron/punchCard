@@ -29,6 +29,7 @@ forms.forEach(form => {addEventListener('submit', function(e) {e.preventDefault(
 
 let punches = JSON.parse(localStorage.getItem('punches')) ||
 [{"punch":"","date":"","time":"","done":false},{"punch":"","date":"","time":"","done":false},{"punch":"","date":"","time":"","done":false},{"punch":"","date":"","time":"","done":false}];
+localStorage.setItem('punches', JSON.stringify(punches));
 
 // populate table function
 
