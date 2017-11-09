@@ -27,7 +27,7 @@ var refresh = document.querySelector('.fa-refresh');
 forms.forEach(form => {addEventListener('submit', function(e) {e.preventDefault();})});
 // create a dataset to store the day's punches
 
-let punches = JSON.parse(localStorage.getItem('punches')) || [];
+let punches = JSON.parse(localStorage.getItem('punches')) || ["","","",""];
 
 // populate table function
 
@@ -42,7 +42,7 @@ function populateTable(){
     pOutDate.querySelector('[name=date]').value = punches[3].date;
 }
 
-if (punches === []){
+if (punches === ["","","",""]){
   trashAll();
 } else {
   populateTable();
@@ -180,6 +180,7 @@ function trashAll(){
   });
   localStorage.setItem('punches', JSON.stringify(punches));
   console.table( JSON.parse( localStorage.getItem( 'punches' ) ) );
+
   populateTable();
 
   punchInCheck = false;
