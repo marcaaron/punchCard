@@ -85,7 +85,6 @@ function updateTable(e){
   } else if (classCheck('lunch-in')){
       if (punchInCheck){
         lunchInCheck = true;
-        e.target.innerHTML = "SUCCESS!";
         e.target.classList.remove("btn");
         e.target.classList.add("success");
         lInTime.querySelector('[name=time]').value = currentTime;
@@ -100,7 +99,6 @@ function updateTable(e){
   } else if (classCheck('lunch-out')){
       if (lunchInCheck){
         lunchOutCheck = true;
-        e.target.innerHTML = "SUCCESS!";
         e.target.classList.remove("btn");
         e.target.classList.add("success");
         lOutTime.querySelector('[name=time]').value = currentTime;
@@ -114,7 +112,6 @@ function updateTable(e){
       }
   } else {
     if (lunchOutCheck){
-      e.target.innerHTML = "SUCCESS!";
       e.target.classList.remove("btn");
       e.target.classList.add("success");
       pOutTime.querySelector('[name=time]').value = currentTime;
@@ -189,10 +186,12 @@ function trashAll(){
   lunchInCheck = false;
   lunchOutCheck = false;
 
-  document.querySelectorAll("button").forEach(button=>{
+  const buttons = document.querySelectorAll("button")
+  console.log(buttons);
+  buttons.forEach(button=>{
     button.classList.add("btn");
     button.classList.remove("success");
-  })
+  });
   punchInBtn.forEach(btn => {btn.addEventListener('click',updateTable)});
   lunchInBtn.forEach(btn => {btn.addEventListener('click',updateTable)});
   lunchOutBtn.forEach(btn => {btn.addEventListener('click',updateTable)});
