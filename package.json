@@ -1,0 +1,28 @@
+{
+  "name": "punchcard",
+  "version": "1.0.0",
+  "description": "a simple punch card app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcaaron/punchCard.git"
+  },
+  "keywords": [
+    "--add",
+    "time",
+    "card",
+    "punch",
+    "card",
+    "punch",
+    "clock"
+  ],
+  "author": "Marc Glasser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcaaron/punchCard/issues"
+  },
+  "homepage": "https://github.com/marcaaron/punchCard#readme"
+}

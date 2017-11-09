@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="updateTime(); setInterval('updateTime()', 1)">
@@ -37,10 +37,17 @@
     </div>
     <div class="row">
       <div class="cell">
-        ...
+        <form class="punch-in-date">
+          <input type="text" name="date" value="..." readonly>
+        </form>
       </div>
       <div class="cell">
-        ...
+        <form class="punch-in-time">
+        <input type="text" data-name="Punch In" data-index="0" name="time" value="..." readonly>
+        <i class="fa fa-pencil" ></i>
+        <i class="fa fa-check"></i>
+        <i class="fa fa-trash-o"></i>
+        </form>
       </div>
     </div>
   </div>
@@ -56,10 +63,17 @@
     </div>
     <div class="row">
       <div class="cell">
-        ...
+        <form class="lunch-in-date">
+          <input type="text" name="date" value="..." readonly>
+        </form>
       </div>
       <div class="cell">
-        ...
+        <form class="lunch-in-time">
+        <input type="text" data-name="Lunch In" data-index="1" name="time" value="..." readonly>
+        <i class="fa fa-pencil" ></i>
+        <i class="fa fa-check"></i>
+        <i class="fa fa-trash-o"></i>
+        </form>
       </div>
     </div>
   </div>
@@ -75,10 +89,17 @@
     </div>
     <div class="row">
       <div class="cell">
-        ...
+        <form class="lunch-out-date">
+          <input type="text" name="date" value="..." readonly>
+        </form>
       </div>
       <div class="cell">
-        ...
+        <form class="lunch-out-time">
+        <input type="text" data-name="Lunch Out" data-index="2" name="time" value="..." readonly>
+        <i class="fa fa-pencil"></i>
+        <i class="fa fa-check"></i>
+        <i class="fa fa-trash-o"></i>
+        </form>
       </div>
     </div>
   </div>
@@ -94,19 +115,25 @@
     </div>
     <div class="row">
       <div class="cell">
-        ...
+        <form class="punch-out-date">
+          <input type="text" name="date" value="..." readonly>
+        </form>
       </div>
       <div class="cell">
-        ...
+        <form class="punch-out-time">
+        <input type="text" data-name="Punch Out" data-index="3" name="time" value="..." readonly>
+        <i class="fa fa-pencil"></i>
+        <i class="fa fa-check"></i>
+        <i class="fa fa-trash-o"></i>
+        </form>
       </div>
     </div>
   </div>
 </div>
 <div class="controls woops">
-  <div class="fa fa-undo"></div>
-  <div class="fa fa-trash"></div>
-  <div class="fa fa-floppy-o"></div>
+  <div class="fa fa-refresh" style="font-size: 40px;"></div>
 
+  <div class="fa fa-floppy-o" style="font-size: 40px;"></div>
 </div>
 <!-- calculate total time worked -->
 
