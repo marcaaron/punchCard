@@ -43,6 +43,7 @@ function populateTable(){
 }
 
 if (punches === []){
+  trashAll();
 } else {
   populateTable();
 }
