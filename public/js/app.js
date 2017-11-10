@@ -25,6 +25,9 @@ var checkmarks = document.querySelectorAll('.fa-check');
 var forms = document.querySelectorAll('form');
 var refresh = document.querySelector('.fa-refresh');
 var save = document.querySelector('.fa-floppy-o');
+var popUpDiv = document.getElementById('popUpDivContent');
+var close = document.querySelector('.close');
+var popUpDivContent = document.querySelector('.popUpDiv');
 
 
 forms.forEach(form => {addEventListener('submit', function(e) {e.preventDefault();})});
@@ -226,8 +229,7 @@ function updateTime(){
 save.addEventListener('click', jsonToCSV);
 //JSON to CSV//
 function jsonToCSV(){
-  const popUpDiv = document.getElementById('popUpDivContent');
-  document.querySelector('.popUpDiv').style.cssText =
+  popUpDivContent.style.cssText =
     `opacity:1;
     transition:all 0.4s;
     transform: translateY(0);`
@@ -241,6 +243,12 @@ function jsonToCSV(){
   })
   csv.unshift(fields.join(',')) // add header column
   var output = csv.join('\r\n');
-  console.log(output);
   popUpDiv.innerHTML = output;
 }
+
+close.addEventListener('click', function(){
+  popUpDivContent.style.cssText =
+    `opacity:0;
+    transition:all 0.4s;
+    transform: translateY(-200%);`
+});

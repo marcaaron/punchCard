@@ -218,3 +218,7 @@ input{
   align-items: center;
   text-align: center;
 }
+
+.close{
+  background-color: grey;
+}
