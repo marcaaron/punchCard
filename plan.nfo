@@ -1,0 +1,16 @@
+must organize project so there are consistent module paths/patterns
+
+pull html and css files into main node app for deployment - develop better architecture
+
+create JS modules and refactor code to be less repetitive and manage the various punch events
+
+create mysql module to capture daily data stored in localstorage and push to mysql database once saved
+
+reset program according to daily clock - resets at midnight e.g.
+
+fix bug where refreshing page also resets button state which preventing user from logging subsequent punches
+
+create historical UI for viewing data and tabulating hours pulled from mysql database
+  - total hours worked for day/week/month
+  - average lunch break time
+  - convert and output JSON to pdf file in browser
