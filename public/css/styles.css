@@ -222,3 +222,8 @@ input{
 .close{
   background-color: grey;
 }
+
+.mySqlObject{
+  font-size: 30px;
+  color: white;
+}
