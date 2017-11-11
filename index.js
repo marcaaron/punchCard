@@ -36,31 +36,33 @@ var con = mysql.createConnection({
 //   }
 // ];
 
+var database = [];
+var arrayItem = {};
+
+
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 app.use('/', function(req,res,next){
   console.log(`Request url: ${req.url}`);
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM punchcard", function (err, result, fields) {
+      if (err) throw err;
+      for (i=0; i < result.length; i++){
+        arrayItem = {
+          punchType: result[i].punchType,
+          currendDate: result[i].currentDate,
+          currentTime: result[i].currentTime
+        };
+        database.push(arrayItem);
+      }
+    });
+  });
   next();
 });
 
 // return data from mysql
-var database = [];
-var arrayItem = {};
-con.connect(function(err) {
-  if (err) throw err;
-  con.query("SELECT * FROM punchcard", function (err, result, fields) {
-    if (err) throw err;
-    for (i=0; i < result.length; i++){
-      arrayItem = {
-        punchType: result[i].punchType,
-        currendDate: result[i].currentDate,
-        currentTime: result[i].currentTime
-      };
-      database.push(arrayItem);
-    }
-  });
-});
 
 
 app.get('/', function(req, res){
