@@ -6,28 +6,7 @@ angular.module('punchCard')
   .controller('MainController', ctrlFunc);
 
 function ctrlFunc(){
-  this.database = [
-    {
-      punchType: 'Punch In',
-      currentDate: '12/18/85',
-      currentTime: '11:30 AM'
-    },
-    {
-      punchType: 'Lunch In',
-      currentDate: '12/18/85',
-      currentTime: '11:35 AM'
-    },
-    {
-      punchType: 'Lunch Out',
-      currentDate: '12/18/85',
-      currentTime: '11:40 AM'
-    },
-    {
-      punchType: 'Punch Out',
-      currentDate: '12/18/85',
-      currentTime: '5:00 PM'
-    }
-  ];
+  this.database = clientDatabase;
 }
 
 // get the buttons in the DOM //
