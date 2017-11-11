@@ -139,16 +139,20 @@
 </div>
 <div class="mySqlObject">
   <table>
-    <tr>
-      <th>Punch Type</th>
-      <th>Date</th>
-      <th>Time</th>
-    </tr>
-    <tr ng-repeat"entry in vm.database">
-      <td>{{ entry.punchType }}</td>
-      <td>{{ entry.currentDate }}</td>
-      <td>{{ entry.currentTime }}</td>
-   </tr>
+    <thead>
+      <tr>
+        <th>Punch Type</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat"entry in vm.database">
+      <tr>
+        <td>{{ entry.punchType }}</td>
+        <td>{{ entry.currentDate }}</td>
+        <td>{{ entry.currentTime }}</td>
+     </tr>
+   </tbody>
  </table>
 </div>
 <!-- calculate total time worked -->
