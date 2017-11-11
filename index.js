@@ -46,13 +46,17 @@ app.use('/', function(req,res,next){
 
 // return data from mysql
 var database = [];
-var arrayItem = {}
+var arrayItem = {};
 con.connect(function(err) {
   if (err) throw err;
   con.query("SELECT * FROM punchcard", function (err, result, fields) {
     if (err) throw err;
     for (i=0; i < result.length; i++){
-      arrayItem = {result[i].punchType, result[i].currentDate, result[i].currentTime}
+      arrayItem = {
+        punchType: result[i].punchType,
+        currendDate: result[i].currentDate,
+        currentTime: result[i].currentTime
+      };
       database.push(arrayItem);
     }
   });
