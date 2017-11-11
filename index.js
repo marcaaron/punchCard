@@ -12,29 +12,29 @@ var con = mysql.createConnection({
   database : 'punchCard'
 });
 
-var database =
-[
-  {
-    punchType: 'Punch In',
-    currentDate: '12/18/85',
-    currentTime: '11:30 AM'
-  },
-  {
-    punchType: 'Lunch In',
-    currentDate: '12/18/85',
-    currentTime: '11:35 AM'
-  },
-  {
-    punchType: 'Lunch Out',
-    currentDate: '12/18/85',
-    currentTime: '11:40 AM'
-  },
-  {
-    punchType: 'Punch Out',
-    currentDate: '12/18/85',
-    currentTime: '5:00 PM'
-  }
-];
+// var database =
+// [
+//   {
+//     punchType: 'Punch In',
+//     currentDate: '12/18/85',
+//     currentTime: '11:30 AM'
+//   },
+//   {
+//     punchType: 'Lunch In',
+//     currentDate: '12/18/85',
+//     currentTime: '11:35 AM'
+//   },
+//   {
+//     punchType: 'Lunch Out',
+//     currentDate: '12/18/85',
+//     currentTime: '11:40 AM'
+//   },
+//   {
+//     punchType: 'Punch Out',
+//     currentDate: '12/18/85',
+//     currentTime: '5:00 PM'
+//   }
+// ];
 
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -45,17 +45,18 @@ app.use('/', function(req,res,next){
 });
 
 // return data from mysql
-// var mySQLdatabase = [];
-//
-// con.connect(function(err) {
-//   if (err) throw err;
-//   con.query("SELECT * FROM punchcard", function (err, result, fields) {
-//     if (err) throw err;
-//     for (i=0; i < result.length; i++){
-//       mySQLdatabase.push(`${result[i].punchType} on ${result[i].currentDate} at ${result[i].currentTime}`);
-//     }
-//   });
-// });
+var database = [];
+var arrayItem = {}
+con.connect(function(err) {
+  if (err) throw err;
+  con.query("SELECT * FROM punchcard", function (err, result, fields) {
+    if (err) throw err;
+    for (i=0; i < result.length; i++){
+      arrayItem = {result[i].punchType, result[i].currentDate, result[i].currentTime}
+      database.push(arrayItem);
+    }
+  });
+});
 
 
 app.get('/', function(req, res){
