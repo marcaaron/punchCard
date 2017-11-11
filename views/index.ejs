@@ -138,13 +138,18 @@
   <div class="popUpDiv"><div id="popUpDivContent"></div><button class="close">CLOSE</button></div>
 </div>
 <div class="mySqlObject">
-  <input type="text" ng-model="vm.message"/><br />
-{{ vm.message }}
-  <ul>
-    <li ng-repeat="entry in vm.database">
-      {{ entry.punchType }}{{ entry.currentDate }}{{ entry.currentTime }}
-    </li>
-  </ul>
+  <table>
+    <tr>
+      <th>Punch Type</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+    <tr ng-repeat"entry in vm.database">
+      <td>{{ entry.punchType }}</td>
+      <td>{{ entry.currentDate }}</td>
+      <td>{{ entry.currentTime }}</td>
+   </tr>
+ </table>
 </div>
 <!-- calculate total time worked -->
 
