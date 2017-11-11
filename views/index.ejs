@@ -1,12 +1,12 @@
-<html>
+<html ng-app="punchCard">
 <head>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
 </head>
-<body onload="updateTime(); setInterval('updateTime()', 1)">
+<body onload="updateTime(); setInterval('updateTime()', 1)" ng-controller="MainController as vm">
   <!-- <h1> PUNCH CARD APP </h1> -->
 
 <!-- fancy buttons to punch in, lunch start, lunch end, punch out -->
@@ -136,6 +136,9 @@
 
   <div class="fa fa-floppy-o" style="font-size: 40px;"></div>
   <div class="popUpDiv"><div id="popUpDivContent"></div><button class="close">CLOSE</button></div>
+</div>
+<div class="mySqlObject">
+{{ vm.message }}  
 </div>
 <!-- calculate total time worked -->
 

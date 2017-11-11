@@ -1,3 +1,14 @@
+//set up angular
+
+angular.module('punchCard',[]);
+
+angular.module('punchCard')
+  .controller('MainController', ctrlFunc);
+
+function ctrlFunc(){
+  this.message = 'Hello';
+}
+
 // get the buttons in the DOM //
 
 var punchInBtn = document.querySelectorAll('.punch-in');

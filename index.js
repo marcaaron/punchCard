@@ -20,6 +20,20 @@ app.use('/', function(req,res,next){
   next();
 });
 
+// return data from mysql
+// var mySQLdatabase = [];
+//
+// con.connect(function(err) {
+//   if (err) throw err;
+//   con.query("SELECT * FROM punchcard", function (err, result, fields) {
+//     if (err) throw err;
+//     for (i=0; i < result.length; i++){
+//       mySQLdatabase.push(`${result[i].punchType} on ${result[i].currentDate} at ${result[i].currentTime}`);
+//     }
+//   });
+// });
+
+
 app.get('/', function(req, res){
   res.render('index');
 });
@@ -53,15 +67,3 @@ app.listen(port);
 //   });
 // });
 //
-
-// return data
-//
-// con.connect(function(err) {
-//   if (err) throw err;
-//   con.query("SELECT * FROM punchcard", function (err, result, fields) {
-//     if (err) throw err;
-//     for (i=0; i < result.length; i++){
-//       console.log(`${result[i].punchType} on ${result[i].currentDate} at ${result[i].currentTime}`);
-//     }
-//   });
-// });
