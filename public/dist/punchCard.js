@@ -1,14 +1,3 @@
-//set up angular
-
-angular.module('punchCard',[]);
-
-angular.module('punchCard')
-  .controller('MainController', ctrlFunc);
-
-function ctrlFunc(){
-  this.database = clientDatabase;
-}
-
 // get the buttons in the DOM //
 
 var punchInBtn = document.querySelectorAll('.punch-in');
@@ -41,7 +30,7 @@ var close = document.querySelector('.close');
 var popUpDivContent = document.querySelector('.popUpDiv');
 
 
-forms.forEach(form => {addEventListener('submit', function(e) {e.preventDefault();})});
+// forms.forEach(form => {addEventListener('submit', function(e) {e.preventDefault();})});
 // create a dataset to store the day's punches
 
 let punches = JSON.parse(localStorage.getItem('punches')) ||
@@ -68,9 +57,9 @@ if (punches === [{"punch":"","date":"","time":""},{"punch":"","date":"","time":"
 }
 
 // variable to test if previous punch has been made
-let punchInCheck = false;
-let lunchInCheck = false;
-let lunchOutCheck = false;
+let punchInCheck;
+let lunchInCheck;
+let lunchOutCheck;
 
 // functions
 function updateTable(e){
@@ -90,55 +79,59 @@ function updateTable(e){
   if (classCheck('punch-in')){
     punchInCheck = true;
     // e.target.innerHTML = "SUCCESS!";
-    e.target.classList.remove("btn");
-    e.target.classList.add("success");
+    // e.target.classList.remove("btn");
+    // e.target.classList.add("success");
     pInTime.querySelector('[name=time]').value = currentTime;
     pInDate.querySelector('[name=date]').value = currentDate;
     punches.splice(0, 1, punch);
+    finalFormFill();
     console.table(punches);
     localStorage.setItem('punches', JSON.stringify(punches));
-    punchInBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
+    // punchInBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
   } else if (classCheck('lunch-in')){
-      if (punchInCheck){
+      // if (punchInCheck){
         lunchInCheck = true;
-        e.target.classList.remove("btn");
-        e.target.classList.add("success");
+        // e.target.classList.remove("btn");
+        // e.target.classList.add("success");
         lInTime.querySelector('[name=time]').value = currentTime;
         lInDate.querySelector('[name=date]').value = currentDate;
         punches.splice(1, 1, punch);
+        finalFormFill();
         console.table(punches);
         localStorage.setItem('punches', JSON.stringify(punches));
-        lunchInBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
-      } else {
-        alert("Please punch in before taking lunch!");
-      }
+        // lunchInBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
+      // } else {
+      //   alert("Please punch in before taking lunch!");
+      // }
   } else if (classCheck('lunch-out')){
-      if (lunchInCheck){
+      // if (lunchInCheck){
         lunchOutCheck = true;
-        e.target.classList.remove("btn");
-        e.target.classList.add("success");
+        // e.target.classList.remove("btn");
+        // e.target.classList.add("success");
         lOutTime.querySelector('[name=time]').value = currentTime;
         lOutDate.querySelector('[name=date]').value = currentDate;
         punches.splice(2, 1, punch);
+        finalFormFill();
         console.table(punches);
         localStorage.setItem('punches', JSON.stringify(punches));
-        lunchOutBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
-      } else{
-        alert("Please punch in lunch start before punching out!");
-      }
+        // lunchOutBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
+      // } else{
+      //   alert("Please punch in lunch start before punching out!");
+      // }
   } else {
-    if (lunchOutCheck){
-      e.target.classList.remove("btn");
-      e.target.classList.add("success");
+    // if (lunchOutCheck){
+      // e.target.classList.remove("btn");
+      // e.target.classList.add("success");
       pOutTime.querySelector('[name=time]').value = currentTime;
       pOutDate.querySelector('[name=date]').value = currentDate;
       punches.splice(3, 1, punch);
+      finalFormFill();
       localStorage.setItem('punches', JSON.stringify(punches));
       console.table( JSON.parse( localStorage.getItem( 'punches' ) ) );
-      punchOutBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
-    } else {
-      alert('Please end lunch before punching out!');
-    }
+      // punchOutBtn.forEach(btn => {btn.removeEventListener('click',updateTable)});
+    // } else {
+    //   alert('Please end lunch before punching out!');
+    // }
   }
 };
 
@@ -159,6 +152,7 @@ function allowEdits(e){
     punches.splice(e.target.dataset.index, 1, punch);
     localStorage.setItem('punches', JSON.stringify(punches));
     console.table( JSON.parse( localStorage.getItem( 'punches' ) ) );
+    finalFormFill();
   })
 }
 
@@ -237,25 +231,14 @@ function updateTime(){
   currentTime = new Date().toLocaleTimeString();
 };
 
-save.addEventListener('click', jsonToCSV);
+// save.addEventListener('click', postedPopup);
 //JSON to CSV//
-function jsonToCSV(){
-  popUpDivContent.style.cssText =
-    `opacity:1;
-    transition:all 0.4s;
-    transform: translateY(0);`
-  var json = punches;
-  var fields = Object.keys(json[0]);
-  var replacer = function(key, value) { return value === null ? '' : value }
-  var csv = json.map(function(row){
-    return fields.map(function(fieldName){
-      return JSON.stringify(row[fieldName], replacer)
-    }).join(',')
-  })
-  csv.unshift(fields.join(',')) // add header column
-  var output = csv.join('\r\n');
-  popUpDiv.innerHTML = output;
-}
+// function postedPopup(){
+//   popUpDivContent.style.cssText =
+//     `opacity:1;
+//     transition:all 0.4s;
+//     transform: translateY(0);`;
+// }
 
 close.addEventListener('click', function(){
   popUpDivContent.style.cssText =
@@ -263,3 +246,13 @@ close.addEventListener('click', function(){
     transition:all 0.4s;
     transform: translateY(-200%);`
 });
+
+function finalFormFill(){
+document.querySelector('.finalDate').value = new Date().toLocaleDateString();
+document.querySelector('.finalPunchIn').value = punches[0].time;
+document.querySelector('.finalLunchIn').value = punches[1].time;
+document.querySelector('.finalLunchOut').value = punches[2].time;
+document.querySelector('.finalPunchOut').value = punches[3].time;
+};
+
+// document.querySelector('.finalForm').addEventListener('click', trashAll);

@@ -1,0 +1,10 @@
+doctype html
+html
+head
+  title= `${title}`
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto+Mono:700')
+  link(rel='stylesheet', href='/dist/styles.css')
+  meta(name='viewport', content="width=device-width, initial-scale=1")
+body(onload="updateTime(); setInterval('updateTime()', 1)")
+block content

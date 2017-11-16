@@ -1,0 +1,87 @@
+extends layout
+block content
+  .btn-container
+    div
+      button(type="button" class="punch-in btn" data-name="Punch In") PUNCH IN
+    div
+      button(type="button" class="lunch-in btn" data-name="Lunch In") START LUNCH
+    div
+      button(type="button" class="lunch-out btn" data-name="Lunch Out") END LUNCH
+    div
+      button(type="button" class="punch-out btn" data-name="Punch Out") PUNCH OUT
+  .wrapper
+    .table.punchin
+      .row.header
+        .cell Punch In
+        .cell Time
+      .row
+        .cell
+          form.punch-in-date
+            input(type="text" name="date" value="..." readonly)
+        .cell
+          form(class="punch-in-time")
+            input(type="text" data-name="Punch In" data-index="0" name="time" value="..." readonly)
+            i.fa.fa-pencil
+            i.fa.fa-check
+            i.fa.fa-trash-o
+    .table.lunchin
+      .row.header.alt
+        .cell Start Lunch
+        .cell Time
+      .row
+        .cell
+          form.lunch-in-date
+            input(type="text" name="date" value="..." readonly)
+        .cell
+          form.lunch-in-time
+            input(type="text" data-name="Lunch In" data-index="1" name="time" value="..." readonly)
+            i.fa.fa-pencil
+            i.fa.fa-check
+            i.fa.fa-trash-o        
+    .table.lunchout
+      .row.header
+        .cell End Lunch
+        .cell Time
+      .row
+        .cell
+          form.lunch-out-date
+            input(type="text" name="date" value="..." readonly)
+        .cell
+          form.lunch-out-time
+            input(type="text" data-name="Lunch Out" data-index="2" name="time" value="..." readonly)
+            i.fa.fa-pencil
+            i.fa.fa-check
+            i.fa.fa-trash-o
+    .table.punchout
+      .row.header.alt
+        .cell Punch Out
+        .cell Time
+      .row
+        .cell
+          form.punch-out-date
+            input(type="text" name="date" value="..." readonly)
+        .cell
+          form.punch-out-time
+            input(type="text" data-name="Punch Out" data-index="3" name="time" value="..." readonly)
+            i.fa.fa-pencil
+            i.fa.fa-check
+            i.fa.fa-trash-o
+  .controls.woops
+    div.fa.fa-refresh(style="font-size: 40px;")
+    //- div.fa.fa-floppy-o(style="font-size: 40px;")  
+    .popUpDiv
+      #popUpDivContent
+      button.close Saved to Database
+  form.finalForm(action="/" method="POST")
+    label(for="date")
+    input.finalDate(type="text" name="date" value="")
+    label(for="punchin")
+    input.finalPunchIn(type="text" name="punchin" value="")
+    label(for="lunchin")
+    input.finalLunchIn(type="text" name="lunchin" value="")
+    label(for="lunchout")
+    input.finalLunchOut(type="text" name="lunchout" value="")
+    label(for="punchout")
+    input.finalPunchOut(type="text" name="punchout" value="") 
+    input.finalSubmit(type="submit" value="FINALIZE PUNCHES AND SAVE TO DATABASE!")
+  script(src="dist/punchCard.js")

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 punchCard Archive
+  table.archive
+    tr
+      th Date
+      th Punch In
+      th Lunch In
+      th Lunch Out
+      th Punch Out 
+    each punch in punches
+      tr 
+        td #{punch.date}
+        td #{punch.punchin}
+        td #{punch.lunchin}
+        td #{punch.lunchout}
+        td #{punch.punchout}
+  a(href="./")
+    button.return return to punchCard      
+    
+  script.
+    function updateTime(){
+      currentDate = new Date().toLocaleDateString();
+      currentTime = new Date().toLocaleTimeString();
+    };

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html ng-app="punchCard">
 <head>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,7 +27,6 @@
 </div>
 <!-- disply date and time for each -->
 <div class="wrapper">
-
   <div class="table punchin">
     <div class="row header">
       <div class="cell">
@@ -44,15 +44,14 @@
       </div>
       <div class="cell">
         <form class="punch-in-time">
-        <input type="text" data-name="Punch In" data-index="0" name="time" value="..." readonly>
-        <i class="fa fa-pencil" ></i>
-        <i class="fa fa-check"></i>
-        <i class="fa fa-trash-o"></i>
+          <input type="text" data-name="Punch In" data-index="0" name="time" value="..." readonly>
+          <i class="fa fa-pencil" ></i>
+          <i class="fa fa-check"></i>
+          <i class="fa fa-trash-o"></i>
         </form>
       </div>
     </div>
   </div>
-
   <div class="table lunchin">
     <div class="row header alt">
       <div class="cell">
@@ -70,15 +69,14 @@
       </div>
       <div class="cell">
         <form class="lunch-in-time">
-        <input type="text" data-name="Lunch In" data-index="1" name="time" value="..." readonly>
-        <i class="fa fa-pencil" ></i>
-        <i class="fa fa-check"></i>
-        <i class="fa fa-trash-o"></i>
+          <input type="text" data-name="Lunch In" data-index="1" name="time" value="..." readonly>
+          <i class="fa fa-pencil" ></i>
+          <i class="fa fa-check"></i>
+          <i class="fa fa-trash-o"></i>
         </form>
       </div>
     </div>
   </div>
-
   <div class="table lunchout">
     <div class="row header">
       <div class="cell">
@@ -96,61 +94,45 @@
       </div>
       <div class="cell">
         <form class="lunch-out-time">
-        <input type="text" data-name="Lunch Out" data-index="2" name="time" value="..." readonly>
-        <i class="fa fa-pencil"></i>
-        <i class="fa fa-check"></i>
-        <i class="fa fa-trash-o"></i>
+          <input type="text" data-name="Lunch Out" data-index="2" name="time" value="..." readonly>
+          <i class="fa fa-pencil"></i>
+          <i class="fa fa-check"></i>
+          <i class="fa fa-trash-o"></i>
         </form>
       </div>
     </div>
-  </div>
-
-  <div class="table punchout">
-    <div class="row header alt">
-      <div class="cell">
+    </div>
+    <div class="table punchout">
+      <div class="row header alt">
+        <div class="cell">
         Punch Out
-      </div>
-      <div class="cell">
+        </div>
+        <div class="cell">
         Time
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="cell">
-        <form class="punch-out-date">
-          <input type="text" name="date" value="..." readonly>
-        </form>
-      </div>
-      <div class="cell">
-        <form class="punch-out-time">
-        <input type="text" data-name="Punch Out" data-index="3" name="time" value="..." readonly>
-        <i class="fa fa-pencil"></i>
-        <i class="fa fa-check"></i>
-        <i class="fa fa-trash-o"></i>
-        </form>
+      <div class="row">
+        <div class="cell">
+          <form class="punch-out-date">
+            <input type="text" name="date" value="..." readonly>
+          </form>
+        </div>
+        <div class="cell">
+          <form class="punch-out-time">
+            <input type="text" data-name="Punch Out" data-index="3" name="time" value="..." readonly>
+            <i class="fa fa-pencil"></i>
+            <i class="fa fa-check"></i>
+            <i class="fa fa-trash-o"></i>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="controls woops">
-  <div class="fa fa-refresh" style="font-size: 40px;"></div>
-
-  <div class="fa fa-floppy-o" style="font-size: 40px;"></div>
-  <div class="popUpDiv"><div id="popUpDivContent"></div><button class="close">CLOSE</button></div>
-</div>
-<div class="mySqlObject">
-  <ul>
-    <li ng-repeat="entry in vm.database">
-      {{ entry.punchType }} &#124;&#124; {{ entry.currentDate }} &#124;&#124; {{ entry.currentTime }}
-    </li>
-  </ul>
-</div>
-<script>
-  var clientDatabase = <%- JSON.stringify(serverDatabase) %>;
-</script>
-<!-- calculate total time worked -->
-
-<!-- store data in an object on a server -->
-
-  <script src="assets/js/app.js"></script>
+  <div class="controls woops">
+    <div class="fa fa-refresh" style="font-size: 40px;"></div>
+    <div class="fa fa-floppy-o" style="font-size: 40px;"></div>
+    <div class="popUpDiv"><div id="popUpDivContent"></div><button class="close">Saved to Database</button></div>
+  </div>
+  <script src="assets/js/punchCard.js"></script>
 </body>
 </html>
